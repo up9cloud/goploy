@@ -56,7 +56,7 @@
           <span>{{ formProps.dateLocale }}</span>
         </el-form-item>
         <el-form-item :label="$t('script')" prop="script">
-          <el-input v-model.trim="formData.script" autocomplete="off" />
+          <el-input v-model="formData.script" autocomplete="off" />
         </el-form-item>
         <el-form-item v-show="formData.id === 0" :label="$t('server')" prop="serverIds">
           <el-select v-model="formData.serverIds" multiple style="width:100%" filterable>
@@ -393,7 +393,7 @@ export default {
     submit() {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          this.formData.command = this.formData.date + ' ' + this.formData.script
+          this.formData.command = this.formData.date + ' ' + this.formData.script.trim()
           if (this.formData.id === 0) {
             this.add()
           } else {
